@@ -1,0 +1,14 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Description: An AWS Serverless Specification template describing your function.
+Resources:
+  jzhulambdahelloworld:
+    Type: 'AWS::Lambda::Function'
+    Properties:
+      Handler: lambda_function.lambda_handler
+      Runtime: python3.9
+      Code: lambda_function.py
+      Description: 'test cloudformation to deploy lambda'
+      MemorySize: 128
+      Timeout: 3
+      Role: >-
+        arn:aws:iam::050846374571:role/service-role/jzhu-lambda-get-role-2inbzci7

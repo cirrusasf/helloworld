@@ -1,0 +1,16 @@
+ version: 0.2
+
+phases:
+  install:
+    runtime-versions:
+      python: 3.8
+    commands:
+      - apt update
+  build:
+    commands:
+      - pip3 install -r requirements.txt -t src/
+      - aws cloudformation package --template-file cloudformation.yaml --s3-bucket jzhu4 --s3-prefix helloworld --output-template-file cloudformation-final.yaml
+artifacts:
+  type: zip
+  files:
+    - cloudformation-final.yaml
