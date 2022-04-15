@@ -8,21 +8,4 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - run: echo "define the aws credentials."
-
       - uses: actions/checkout@v2
-
-      - uses: aws-actions/configure-aws-credentials@v1
-        with:
-          aws-access-key-id: ${{ secrets.V2_AWS_ACCESS_KEY_ID }}
-          aws-secret-access-key: ${{ secrets.V2_AWS_SECRET_ACCESS_KEY }}
-          aws-region: ${{ secrets.AWS_REGION }}
-
-      - uses: actions/setup-python@v1
-        with:
-          python-version: 3.9
-
-      - uses: buildspec-git-action.yml    
-        with:
-          TEMPLATE_BUCKET: jzhu4
-          STACK_NAME: jzhu-helloworld-git-action
-          ROLE_ARN: arn:aws:iam::050846374571:role/hyp3-ci-CloudformationDeploymentRole-12GDQV5BWO8MR
