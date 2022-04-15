@@ -3,7 +3,7 @@
 phases:
   install:
     runtime-versions:
-      python: 3.8
+      python: 3.9
     commands:
       - apt update
   build:

@@ -1,14 +1,47 @@
 AWSTemplateFormatVersion: '2010-09-09'
 Description: An AWS Serverless Specification template describing your function.
+Parameters:
+  Name:
+    Type: String
+
 Resources:
-  jzhulambdahelloworld:
-    Type: 'AWS::Lambda::Function'
+  LogGroup:
+    Type: AWS::Logs::LogGroup
     Properties:
+      LogGroupName: !Sub "/aws/lambda/${Name}"
+      RetentionInDays: 30
+  Role:
+    Type: AWS::IAM::Role
+    Properties:
+      RoleName: !Ref Name
+      AssumeRolePolicyDocument:
+        Version: 2012-10-17
+        Statement:
+          Action: sts:AssumeRole
+          Principal:
+            Service: lambda.amazonaws.com
+          Effect: Allow
+      Policies:
+      - PolicyName: policy
+        PolicyDocument:
+          Version: 2012-10-17
+          Statement:
+          - Effect: Allow
+            Action: logs:CreateLogGroup
+            Resource: arn:aws:logs:us-west-2:050846374571:*
+          - Effect: Allow
+            Action:
+            - logs:CreateLogStream
+            - logs:PutLogEvents
+            Resource: !GetAtt LogGroup.Arn
+  Lambda:
+    Type: AWS::Lambda::Function
+    Properties:
+      FunctionName: !Ref Name
       Handler: lambda_function.lambda_handler
       Runtime: python3.9
-      Code: lambda_function.py
+      Code: src/
       Description: 'test cloudformation to deploy lambda'
       MemorySize: 128
-      Timeout: 3
-      Role: >-
-        arn:aws:iam::050846374571:role/service-role/jzhu-lambda-get-role-2inbzci7
+      Timeout: 120
+      Role: !GetAtt Role.Arn
