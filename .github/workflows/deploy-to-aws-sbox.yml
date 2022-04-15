@@ -8,6 +8,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - run: echo "define the aws credentials."
+
       - uses: actions/checkout@v2
       - uses: aws-actions/configure-aws-credentials@v1
         with:
