@@ -1,4 +1,4 @@
-name: deploy to aws sbox
+name: deploy-to-aws-sbox
 on: 
   push:
     branches:
