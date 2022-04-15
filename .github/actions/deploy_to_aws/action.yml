@@ -8,7 +8,10 @@ inputs:
   STACK_NAME:
     description: "Name of the deployed stack"
     required: true
-  ROLE_ARN:
+  BUILD_ROLE_ARN:
+    description: "role_arn name"
+    required: true
+  DEPLOY_ROLE_ARN:
     description: "role_arn name"
     required: true
 
@@ -28,15 +31,17 @@ runs:
        run: |
          echo "install requirement..." 
          pip3 install -r requirements.txt -t src/
+         
          echo "aws cloudformation package..."       
          aws cloudformation package \
            --template-file cloudformation.yaml \
+           --role-arn ${{ inputs.BUILD_ROLE_ARN }} \
            --s3-bucket ${{ inputs.TEMPLATE_BUCKET }} \
-           --output-template-file cloudformation-final.yaml
+           --output-template-file cloudformation-final.yml
+         
          echo "aws cloudformation deploy..."
          aws cloudformation deploy \
             --stack-name ${{ inputs.STACK_NAME }} \
             --template-file cloudformation-final.yml \
-            --role-arn ${{ inputs.ROLE_ARN }} \
+            --role-arn ${{ inputs.DEPLOY_ROLE_ARN }} \
             --capabilities CAPABILITY_NAMED_IAM
-
