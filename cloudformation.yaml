@@ -3,7 +3,7 @@ Description: An AWS Serverless Specification template describing your function.
 Parameters:
   Name:
     Type: String
-
+    Default: jzhu-helloworld
 Resources:
   LogGroup:
     Type: AWS::Logs::LogGroup
