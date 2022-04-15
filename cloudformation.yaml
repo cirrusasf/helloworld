@@ -26,10 +26,7 @@ Resources:
         PolicyDocument:
           Version: 2012-10-17
           Statement:
-          - Effect: Allow
-            Action: logs:CreateLogGroup
-            Resource: arn:aws:logs:us-west-2:050846374571:*
-          - Effect: Allow
+            Effect: Allow
             Action:
             - logs:CreateLogStream
             - logs:PutLogEvents
