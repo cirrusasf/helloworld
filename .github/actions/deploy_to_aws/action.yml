@@ -19,7 +19,10 @@ runs:
        shell: bash
        run: |
          apt update
+         echo "updated"
          pip install --upgrade pip
+         echo "upgraded pip"
+
      - name: build and deploy
        shell: bash
        run: |
