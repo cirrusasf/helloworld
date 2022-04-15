@@ -1,0 +1,38 @@
+name: deploy to aws sbox
+description: deploy helloword to aws sbox account
+
+inputs:
+  TEMPLATE_BUCKET:
+    description: "S3 Bucket for CloudFormation deployment artifacts"
+    required: true
+  STACK_NAME:
+    description: "Name of the deployed stack"
+    required: true
+  ROLE_ARN:
+    description: "role_arn name"
+    required: true
+
+runs:
+  using: "composite"
+  steps:
+     - name: install
+       shell: bash
+       run: |
+         apt update
+         pip install --upgrade pip
+     - name: build and deploy
+       shell: bash
+       run: | 
+         pip3 install -r requirements.txt -t src/
+
+         aws cloudformation package \
+           --template-file cloudformation.yaml \
+           --s3-bucket ${{ inputs.TEMPLATE_BUCKET }} \
+           --output-template-file cloudformation-final.yaml
+         
+         aws cloudformation deploy \
+            --stack-name ${{ inputs.STACK_NAME }} \
+            --template-file cloudformation-final.yml \
+            --role-arn ${{ inputs.ROLE_ARN }} \
+            --capabilities CAPABILITY_NAMED_IAM
+
