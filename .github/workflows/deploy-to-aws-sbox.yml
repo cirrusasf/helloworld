@@ -1,6 +1,8 @@
 name: deploy to aws sbox
-on: [push]
-
+on: 
+  push:
+    branches:
+      - main
 jobs:
   deploy:
     runs-on: ubuntu-latest
@@ -21,6 +23,6 @@ jobs:
 
       - uses: buildspec-git-action.yml    
         with:
-            TEMPLATE_BUCKET: jzhu4
-            STACK_NAME: jzhu-helloworld-git-action
-            ROLE_ARN: arn:aws:iam::050846374571:role/hyp3-ci-CloudformationDeploymentRole-12GDQV5BWO8MR
+          TEMPLATE_BUCKET: jzhu4
+          STACK_NAME: jzhu-helloworld-git-action
+          ROLE_ARN: arn:aws:iam::050846374571:role/hyp3-ci-CloudformationDeploymentRole-12GDQV5BWO8MR
