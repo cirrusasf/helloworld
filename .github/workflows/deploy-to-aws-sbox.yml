@@ -19,8 +19,8 @@ jobs:
       - uses: actions/setup-python@v1
         with:
           python-version: 3.9
-      - uses: buildspec-git-action.yml
+      - uses: ./.github/actions/deploy_to_aws
         with:
           TEMPLATE_BUCKET: jzhu4
-          STACK_NAME: jzhu-helloworld-git-action
+          STACK_NAME: jzhu-helloworld-git-action/
           ROLE_ARN: arn:aws:iam::050846374571:role/hyp3-ci-CloudformationDeploymentRole-12GDQV5BWO8MR
