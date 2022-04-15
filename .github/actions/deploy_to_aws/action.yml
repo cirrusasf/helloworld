@@ -18,7 +18,7 @@ runs:
      - name: install
        shell: bash
        run: |
-         apt update
+         sudo apt update
          echo "updated"
          pip install --upgrade pip
          echo "upgraded pip"
