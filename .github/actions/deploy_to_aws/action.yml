@@ -22,14 +22,15 @@ runs:
          pip install --upgrade pip
      - name: build and deploy
        shell: bash
-       run: | 
+       run: |
+         echo "install requirement..." 
          pip3 install -r requirements.txt -t src/
-
+         echo "aws cloudformation package..."       
          aws cloudformation package \
            --template-file cloudformation.yaml \
            --s3-bucket ${{ inputs.TEMPLATE_BUCKET }} \
            --output-template-file cloudformation-final.yaml
-         
+         echo "aws cloudformation deploy..."
          aws cloudformation deploy \
             --stack-name ${{ inputs.STACK_NAME }} \
             --template-file cloudformation-final.yml \
