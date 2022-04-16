@@ -26,11 +26,22 @@ Resources:
         PolicyDocument:
           Version: 2012-10-17
           Statement:
-            Effect: Allow
+          - Effect: Allow
             Action:
             - logs:CreateLogStream
             - logs:PutLogEvents
             Resource: !GetAtt LogGroup.Arn
+
+          - Effect: Allow
+            Action:
+            - s3:PutObject
+            - s3:PutObjectAcl
+            - s3:GetObject
+            - s3:GetObjectAcl
+            - s3:AbortMultipartUpload
+            Resource:                  
+            - arn:aws:s3:::jzhu4
+            - arn:aws:s3:::jzhu4/*
   Lambda:
     Type: AWS::Lambda::Function
     Properties:
