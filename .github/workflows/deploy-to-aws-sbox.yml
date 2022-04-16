@@ -24,4 +24,4 @@ jobs:
           TEMPLATE_BUCKET: jzhu4
           STACK_NAME: jzhu-helloworld-git-action
           BUILD_ROLE_ARN: arn:aws:iam::050846374571:role/service-role/codebuild-jzhu-helloworld-build-service-role
-          DEPLOY_ROLE_ARN: arn:aws:iam::050846374571:role/hyp3-ci-CloudformationDeploymentRole-12GDQV5BWO8MR
+          DEPLOY_ROLE_ARN: arn:aws:iam::050846374571:role/OrganizationAccountAccessRole

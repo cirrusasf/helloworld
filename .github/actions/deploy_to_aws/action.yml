@@ -44,5 +44,4 @@ runs:
             --stack-name ${{ inputs.STACK_NAME }} \
             --template-file cloudformation-final.yml \
             --role-arn ${{ inputs.DEPLOY_ROLE_ARN }} \
-            --role-arn ${{ inputs.BUILD_ROLE_ARN }} \
             --capabilities CAPABILITY_NAMED_IAM
