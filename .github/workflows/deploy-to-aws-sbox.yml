@@ -13,7 +13,7 @@ jobs:
       - uses: actions/checkout@v2
       - uses: aws-actions/configure-aws-credentials@v1
         with:
-          role-to-assume: $$ {{ secretes.ROLE_TO_ASSUME }}
+          role-to-assume: ${{ secretes.ROLE_TO_ASSUME }}
           aws-access-key-id: ${{ secrets.V2_AWS_ACCESS_KEY_ID }}
           aws-secret-access-key: ${{ secrets.V2_AWS_SECRET_ACCESS_KEY }}
           aws-region: ${{ secrets.AWS_REGION }}
