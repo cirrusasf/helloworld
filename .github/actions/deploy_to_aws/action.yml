@@ -35,7 +35,6 @@ runs:
          echo "aws cloudformation package..."       
          aws cloudformation package \
            --template-file cloudformation.yaml \
-           --role-arn ${{ inputs.BUILD_ROLE_ARN }} \
            --s3-bucket ${{ inputs.TEMPLATE_BUCKET }} \
            --output-template-file cloudformation-final.yml
          
@@ -44,4 +43,5 @@ runs:
             --stack-name ${{ inputs.STACK_NAME }} \
             --template-file cloudformation-final.yml \
             --role-arn ${{ inputs.DEPLOY_ROLE_ARN }} \
+            --role-arn ${{ inputs.BUILD_ROLE_ARN }} \
             --capabilities CAPABILITY_NAMED_IAM
