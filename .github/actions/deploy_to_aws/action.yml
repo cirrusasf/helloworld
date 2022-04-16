@@ -8,9 +8,6 @@ inputs:
   STACK_NAME:
     description: "Name of the deployed stack"
     required: true
-  BUILD_ROLE_ARN:
-    description: "role_arn name"
-    required: true
   DEPLOY_ROLE_ARN:
     description: "role_arn name"
     required: true
@@ -26,12 +23,21 @@ runs:
          pip install --upgrade pip
          echo "upgraded pip"
 
-     - name: build and deploy
+     - name: build
        shell: bash
        run: |
          echo "install requirement..." 
          pip3 install -r requirements.txt -t src/
-         
+
+     - name: test aws
+       shell: bash
+       run: |
+         echo "yesy if s3 is accessible"
+         aws s3 ls --recursive s3://jzhu4/
+
+     - name: deploy
+       shell: bash
+       run: |
          echo "aws cloudformation package..."       
          aws cloudformation package \
            --template-file cloudformation.yaml \
