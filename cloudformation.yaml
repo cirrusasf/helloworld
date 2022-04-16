@@ -31,7 +31,6 @@ Resources:
             - logs:CreateLogStream
             - logs:PutLogEvents
             Resource: !GetAtt LogGroup.Arn
-
           - Effect: Allow
             Action:
             - s3:PutObject
