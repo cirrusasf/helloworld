@@ -39,6 +39,7 @@ runs:
            --output-template-file cloudformation-final.yml
          
          echo "aws cloudformation deploy..."
+         
          aws cloudformation deploy \
             --stack-name ${{ inputs.STACK_NAME }} \
             --template-file cloudformation-final.yml \
