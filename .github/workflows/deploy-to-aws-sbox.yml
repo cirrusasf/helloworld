@@ -13,7 +13,6 @@ jobs:
       - uses: actions/checkout@v2
       - uses: aws-actions/configure-aws-credentials@v1
         with:
-          role-to-assume: arn:aws:iam::050846374571:role/OrganizationAccountAccessRole
           aws-access-key-id: ${{ secrets.V2_AWS_ACCESS_KEY_ID }}
           aws-secret-access-key: ${{ secrets.V2_AWS_SECRET_ACCESS_KEY }}
           aws-region: ${{ secrets.AWS_REGION }}
@@ -23,6 +22,6 @@ jobs:
           python-version: 3.9
       - uses: ./.github/actions/deploy_to_aws
         with:
-          TEMPLATE_BUCKET: jzhu4
+          TEMPLATE_BUCKET: cf-templates-1hz9ldhhl4ahu-us-west-2
           STACK_NAME: jzhu-helloworld-git-action
-          DEPLOY_ROLE_ARN: arn:aws:iam::050846374571:role/OrganizationAccountAccessRole
+          DEPLOY_ROLE_ARN: arn:aws:iam::050846374571:role/hyp3-ci-CloudformationDeploymentRole-12GDQV5BWO8MR
