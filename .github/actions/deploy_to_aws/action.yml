@@ -2,6 +2,9 @@ name: deploy to aws sbox
 description: deploy helloword to aws sbox account
 
 inputs:
+  NAME:
+    description: "RNA name prefix"
+    required: false
   TEMPLATE_BUCKET:
     description: "S3 Bucket for CloudFormation deployment artifacts"
     required: true
@@ -48,4 +51,6 @@ runs:
             --stack-name ${{ inputs.STACK_NAME }} \
             --template-file cloudformation-final.yml \
             --role-arn ${{ inputs.DEPLOY_ROLE_ARN }} \
-            --capabilities CAPABILITY_NAMED_IAM
+            --capabilities CAPABILITY_NAMED_IAM \
+            --parameter-overrides \
+                Name='${{ inputs.NAME }}'
