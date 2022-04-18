@@ -3,7 +3,7 @@ Description: An AWS Serverless Specification template describing your function.
 Parameters:
   Name:
     Type: String
-    Default: jzhu-helloworld-git-action
+    Default: jzhu-helloworld-arn-1
 Resources:
   LogGroup:
     Type: AWS::Logs::LogGroup
