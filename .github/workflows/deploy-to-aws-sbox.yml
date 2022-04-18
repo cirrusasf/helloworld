@@ -21,6 +21,6 @@ jobs:
           python-version: 3.9
       - uses: ./.github/actions/deploy_to_aws
         with:
-          TEMPLATE_BUCKET: cf-templates-1hz9ldhhl4ahu-us-west-2
+          TEMPLATE_BUCKET: jzhu4
           STACK_NAME: jzhu-helloworld-git-action
           DEPLOY_ROLE_ARN: arn:aws:iam::050846374571:role/hyp3-ci-CloudformationDeploymentRole-12GDQV5BWO8MR
