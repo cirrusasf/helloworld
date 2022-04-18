@@ -33,7 +33,7 @@ runs:
        shell: bash
        run: |
          echo "test if s3://jzhu4 bucket is accessiable"
-         aws s3 ls --recursive s3://jzhu4 
+         aws s3 ls --recursive ${{ inputs.TEMPLATE_BUCKET }}
      - name: deploy
        shell: bash
        run: |
