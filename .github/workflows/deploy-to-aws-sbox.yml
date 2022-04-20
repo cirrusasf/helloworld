@@ -23,5 +23,5 @@ jobs:
         with:
           NAME: jzhu-helloworld
           TEMPLATE_BUCKET: cf-templates-1hz9ldhhl4ahu-us-west-2
-          STACK_NAME: jzhu-helloworld-github_actions
+          STACK_NAME: jzhu-helloworld-github-actions
           DEPLOY_ROLE_ARN: arn:aws:iam::050846374571:role/hyp3-ci-CloudformationDeploymentRole-12GDQV5BWO8MR
