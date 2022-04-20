@@ -3,7 +3,7 @@ Description: An AWS Serverless Specification template describing your function.
 Parameters:
   Name:
     Type: String
-    Default: jzhu-helloworld-arn-1
+    Default: jzhu-helloworld
 Resources:
   LogGroup:
     Type: AWS::Logs::LogGroup
@@ -39,8 +39,8 @@ Resources:
             - s3:GetObjectAcl
             - s3:AbortMultipartUpload
             Resource:                  
-            - arn:aws:s3:::jzhu4
-            - arn:aws:s3:::jzhu4/*
+            - arn:aws:s3:::*
+            - arn:aws:s3:::*/*
   Lambda:
     Type: AWS::Lambda::Function
     Properties:
