@@ -32,11 +32,6 @@ runs:
          echo "install requirement..." 
          pip3 install -r requirements.txt -t src/
 
-     - name: test s3 access
-       shell: bash
-       run: |
-         echo "test if s3://jzhu4 bucket is accessiable"
-         aws s3 ls --recursive ${{ inputs.TEMPLATE_BUCKET }}
      - name: deploy
        shell: bash
        run: |
